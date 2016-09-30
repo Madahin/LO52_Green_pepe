@@ -1,1 +1,3 @@
-add_lunch_combo arrow-eng
+add_lunch_combo green_pepe-eng
+add_lunch_combo green_pepe-user
+add_lunch_combo green_pepe-userdebug
