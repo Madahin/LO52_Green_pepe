@@ -1,0 +1,1 @@
+time make TARGET_NO_HARDWAREGFX=1 KERNEL_CONFIG=android_omap4plus_defconfig TARGET_PRODUCT=green_pepe TARGET_SIMULATOR=false TARGET_TOOLS_PREFIX=/home/lo52tp/LO52_projet/Sources/android-toolchain-eabi/bin/arm-linux-androideabi- boottarball systemtarball userdatatarball
