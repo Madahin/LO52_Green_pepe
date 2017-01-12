@@ -7,7 +7,9 @@ PRODUCT_NAME:= green_pepe
 PRODUCT_DEVICE:= green_pepe
 PRODUCT_BRAND:= Android
 PRODUCT_MODEL:= Android
-PRODUCT_PACKAGES+= com.android.utbm.green_pepe.missillauncher
-PRODUCT_PACKAGES+= com.android.utbm.green_pepe.missillauncher_JNI.xml
+PRODUCT_PACKAGES+= missile-jni
+PRODUCT_PACKAGES+= com.android.greenpepe.missillauncher \
+		   missillauncher-apk.xml
+	
 
 include $(call all-subdir makefiles)

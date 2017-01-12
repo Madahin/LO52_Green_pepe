@@ -14,19 +14,19 @@
 #define ML_ACTION_MOVE_UP		0x2
 #define ML_ACTION_STOP			0x0
 
-JNIEXPORT Jint JNICALL Java.com.android.green_pepe.missillauncher_pepeDestructor_mlbinInitUsb(JNIEnv *env, jobject obj)
-JNIEXPORT Jint JNICALL Java.com.android.green_pepe.missillauncher_pepeDestructor_mlbinFreeUsb(JNIEnv *env, jobject obj)
-JNIEXPORT Jint JNICALL Java.com.android.green_pepe.missillauncher_pepeDestructor_mlbinMoveDown(JNIEnv *env, jobject obj)
-JNIEXPORT Jint JNICALL Java.com.android.green_pepe.missillauncher_pepeDestructor_mlbinFire(JNIEnv *env, jobject obj)
-JNIEXPORT Jint JNICALL Java.com.android.green_pepe.missillauncher_pepeDestructor_mlbinMoveLeft(JNIEnv *env, jobject obj)
-JNIEXPORT Jint JNICALL Java.com.android.green_pepe.missillauncher_pepeDestructor_mlbinMoveRight(JNIEnv *env, jobject obj)
-JNIEXPORT Jint JNICALL Java.com.android.green_pepe.missillauncher_pepeDestructor_mlbinMoveUp(JNIEnv *env, jobject obj)
-JNIEXPORT Jint JNICALL Java.com.android.green_pepe.missillauncher_pepeDestructor_mlbinStop(JNIEnv *env, jobject obj)
+JNIEXPORT Jint JNICALL Java_com_android_greenpepe_missillauncher_PepeDestructor_mlbinInitUsb(JNIEnv *env, jobject obj);
+JNIEXPORT Jint JNICALL Java_com_android_greenpepe_missillauncher_PepeDestructor_mlbinFreeUsb(JNIEnv *env, jobject obj);
+JNIEXPORT Jint JNICALL Java_com_android_greenpepe_missillauncher_PepeDestructor_mlbinMoveDown(JNIEnv *env, jobject obj);
+JNIEXPORT Jint JNICALL Java_com_android_greenpepe_missillauncher_PepeDestructor_mlbinFire(JNIEnv *env, jobject obj);
+JNIEXPORT Jint JNICALL Java_com_android_greenpepe_missillauncher_PepeDestructor_mlbinMoveLeft(JNIEnv *env, jobject obj);
+JNIEXPORT Jint JNICALL Java_com_android_greenpepe_missillauncher_PepeDestructor_mlbinMoveRight(JNIEnv *env, jobject obj);
+JNIEXPORT Jint JNICALL Java_com_android_greenpepe_missillauncher_PepeDestructor_mlbinMoveUp(JNIEnv *env, jobject obj);
+JNIEXPORT Jint JNICALL Java_com_android_greenpepe_missillauncher_PepeDestructor_mlbinStop(JNIEnv *env, jobject obj);
 
 
 static struct libusb_device_handle *devh;
 
-int mlbin_init_usb(void)
+JNIEXPORT Jint JNICALL Java_com_android_greenpepe_missillauncher_PepeDestructor_mlbinInitUsb(JNIEnv *env, jobject obj)
 {
 	libusb_device **list;
 	libusb_device *device = NULL;
@@ -94,7 +94,7 @@ error:
 	exit(1);
 }
 
-int mlbin_free_usb(void)
+JNIEXPORT Jint JNICALL Java_com_android_greenpepe_missillauncher_PepeDestructor_mlbinFreeUsb(JNIEnv *env, jobject obj)
 {
 	libusb_release_interface(devh, 0);
 	libusb_close(devh);
@@ -103,7 +103,7 @@ int mlbin_free_usb(void)
 	return 0;
 }
 
-int mlbin_fire(void)
+JNIEXPORT Jint JNICALL Java_com_android_greenpepe_missillauncher_PepeDestructor_mlbinFire(JNIEnv *env, jobject obj)
 {
 	unsigned char data[] = {0x5f, ML_ACTION_FIRE, 0xe0, 0xff, 0xfe};
 	libusb_control_transfer(devh, 0x21, 0x09, 0, 0, data, 5, 300);
@@ -112,7 +112,7 @@ int mlbin_fire(void)
 	return 0;
 }
 
-int mlbin_move_down(void)
+JNIEXPORT Jint JNICALL Java_com_android_greenpepe_missillauncher_PepeDestructor_mlbinMoveDown(JNIEnv *env, jobject obj)
 {
 	unsigned char data[] = {0x5f, ML_ACTION_MOVE_DOWN, 0xe0, 0xff, 0xfe};
 	libusb_control_transfer(devh, 0x21, 0x09, 0, 0, data, 5, 300);
@@ -121,7 +121,7 @@ int mlbin_move_down(void)
 	return 0;
 }
 
-int mlbin_move_left(void)
+JNIEXPORT Jint JNICALL Java_com_android_greenpepe_missillauncher_PepeDestructor_mlbinMoveLeft(JNIEnv *env, jobject obj)
 {
 	unsigned char data[] = {0x5f, ML_ACTION_MOVE_LEFT, 0xe0, 0xff, 0xfe};
 	libusb_control_transfer(devh, 0x21, 0x09, 0, 0, data, 5, 300);
@@ -130,7 +130,7 @@ int mlbin_move_left(void)
 	return 0;
 }
 
-int mlbin_move_right(void)
+JNIEXPORT Jint JNICALL Java_com_android_greenpepe_missillauncher_PepeDestructor_mlbinMoveRight(JNIEnv *env, jobject obj)
 {
 	unsigned char data[] = {0x5f, ML_ACTION_MOVE_RIGHT, 0xe0, 0xff, 0xfe};
 	libusb_control_transfer(devh, 0x21, 0x09, 0, 0, data, 5, 300);
@@ -139,7 +139,7 @@ int mlbin_move_right(void)
 	return 0;
 }
 
-int mlbin_move_up(void)
+JNIEXPORT Jint JNICALL Java_com_android_greenpepe_missillauncher_PepeDestructor_mlbinMoveUp(JNIEnv *env, jobject obj)
 {
 	unsigned char data[] = {0x5f, ML_ACTION_MOVE_UP, 0xe0, 0xff, 0xfe};
 	libusb_control_transfer(devh, 0x21, 0x09, 0, 0, data, 5, 300);
@@ -148,7 +148,7 @@ int mlbin_move_up(void)
 	return 0;
 }
 
-int mlbin_stop(void)
+JNIEXPORT Jint JNICALL Java_com_android_greenpepe_missillauncher_PepeDestructor_mlbinStop(JNIEnv *env, jobject obj)
 {
 	unsigned char data[] = {0x5f, ML_ACTION_STOP, 0xe0, 0xff, 0xfe};
 	libusb_control_transfer(devh, 0x21, 0x09, 0, 0, data, 5, 300);

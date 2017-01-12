@@ -1,10 +1,15 @@
+LOCAL_PATH := $(call my_dir)
 include $(CLEAR_VARS)
 
-LOCAL_MODULE:=com.android.utbm.green_pepe.missillauncher_JNI.missillauncher.xml
-LOCAL_MODULE_TAGS:=optional
-LOCAL_SRC_FILES:=$(LOCAL_MODULE)
-LOCAL_MODULE_CLASS:=ETC
+LOCAL_SRC_FILES := mlbin-jni.c
+LOCAL_C_INCLUDES += $(JNI_H_INCLUDE)
 
-LOCAL_MODULE_PATH := $(TARGET_OUT_ETC)/permissions
+LOCAL_SHARED_LIBRARIES := libusb-lib \
+			  libcutils \
+			  libutils
 
-include $(BUILD_PREBUILT)
+LOCAL_MODULE:= missile-jni
+LOCAL_MODULE_TAGS:= optional
+LOCAL_PRELINK_MODULE := false
+
+include $(BUILD_SHARED_LIBRARY)

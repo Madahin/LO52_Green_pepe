@@ -1,15 +1,15 @@
 package com.android.green_pepe.missillauncher
 
-class PepeDestructor{
+public class PepeDestructor{
 
-	private static native int mlbinInitUsb(void);
-	private static native int mlbinFreeUsb(void);
-	private static native int mlbinMoveDown(void);
-	private static native int mlbinFire(void);
-	private static native int mlbinMoveLeft(void);
-	private static native int mlbinMoveRight(void);
-	private static native int mlbinMoveUp(void);
-	private static native int mlbinMoveRight(void);
+	private native int mlbinInitUsb(void);
+	private native int mlbinFreeUsb(void);
+	private native int mlbinMoveDown(void);
+	private native int mlbinFire(void);
+	private native int mlbinMoveLeft(void);
+	private native int mlbinMoveRight(void);
+	private native int mlbinMoveUp(void);
+	private native int mlbinStop(void);
 
 
 	public static void main()
@@ -19,6 +19,6 @@ class PepeDestructor{
 
 	static
 	{
-		system.loadLibrary("mlbinInitUsb");
+		system.loadLibrary("mlbinInitUsb"_jni);
 	}
 }
